@@ -102,7 +102,7 @@ contract StakeUtils is VestingUtils, IStakeUtils {
             .mul(totalStakedAtPreviousEpoch)
             .div(stakedAtPreviousEpoch);
         balances[userAddress] = balances[userAddress].add(vestedRewards);
-        createVesting(userAddress, vestedRewards, currentEpochIndex.add(rewardVestingPeriod));
+        createVesting(userAddress, vestedRewards, currentEpochIndex.add(rewardVestingPeriod), address(0));
         unpaidVestedRewardsAtEpoch[previousEpochIndex] = unpaidVestedRewardsAtEpoch[previousEpochIndex]
             .sub(vestedRewards);
 

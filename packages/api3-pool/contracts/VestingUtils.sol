@@ -31,7 +31,8 @@ contract VestingUtils is IouUtils, IVestingUtils {
     function createVesting(
         address userAddress,
         uint256 amount,
-        uint256 vestingEpoch
+        uint256 vestingEpoch,
+        address reverser
         )
         internal
     {
@@ -44,7 +45,8 @@ contract VestingUtils is IouUtils, IVestingUtils {
         vestings[vestingId] = Vesting({
             userAddress: userAddress,
             amount: amount,
-            epoch: vestingEpoch
+            epoch: vestingEpoch,
+            reverser: reverser
             });
         emit VestingCreated(vestingId, userAddress, amount, vestingEpoch);
     }

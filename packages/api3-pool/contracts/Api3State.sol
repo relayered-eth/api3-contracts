@@ -39,6 +39,7 @@ contract Api3State is Ownable, IApi3State {
         address userAddress;
         uint256 amount;
         uint256 epoch;
+        address reverser;
     }
 
     /// API3 token contract 

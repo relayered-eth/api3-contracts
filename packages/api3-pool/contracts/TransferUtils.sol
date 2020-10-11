@@ -52,7 +52,8 @@ contract TransferUtils is PoolUtils, ITransferUtils {
         address sourceAddress,
         uint256 amount,
         address userAddress,
-        uint256 vestingTimestamp
+        uint256 vestingTimestamp,
+        address reverser
         )
         external
         override
@@ -60,7 +61,7 @@ contract TransferUtils is PoolUtils, ITransferUtils {
         api3Token.transferFrom(sourceAddress, address(this), amount);
         balances[userAddress] = balances[userAddress].add(amount);
         uint256 vestingEpoch = getEpochIndex(vestingTimestamp);
-        createVesting(userAddress, amount, vestingEpoch);
+        createVesting(userAddress, amount, vestingEpoch, reverser);
         emit DepositedWithVesting(sourceAddress, amount, userAddress, vestingEpoch);
     }
 
